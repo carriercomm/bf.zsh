@@ -1,0 +1,18 @@
+local str src= i ch
+local n=0
+str="$1"
+
+for ((i = 1; $i <= $#str; i++)); do
+  ch="$(printf %d "'${str[$i]}")"
+  for ((; $n < $ch; n++)); do
+    src+="+"
+  done
+  for ((; $n > $ch; n--)); do
+    src+="-"
+  done
+  src+="."
+done
+
+echo "$src"
+
+# vim: filetype=zsh
