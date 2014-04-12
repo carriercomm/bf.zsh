@@ -1,0 +1,86 @@
+local i
+
+#parse command line params local arg src 
+local arg src
+[[ $# -eq 0 ]] && echo "filename missing" && return 1
+
+for ((i = 1; $i <= $#; i++ )); do
+  arg=$*[$i]
+  case $arg in
+    -e)
+      i=$(( $i + 1 ))
+      src+=${*[$i]};;
+    *)
+      src+=$(< $arg);;
+  esac
+done
+
+# define opcodes
+local OP_INCR=1 OP_DECR=2 OP_SUCC=3 OP_PRED=4
+local OP_WRITE=5 OP_READ=6
+local OP_IF=7 OP_GOTO=8
+local OP_SETZERO=9
+
+# parse and compile
+local loop
+local -a code loops
+
+for ((i = 1; $i <= $#src; i++)); do
+  case $src[$i] in
+    '+') code+=($OP_INCR);;
+    '-') code+=($OP_DECR);;
+    '>') code+=($OP_SUCC);;
+    '<') code+=($OP_PRED);;
+    '.') code+=($OP_WRITE);;
+    ',') code+=($OP_READ);;
+    '[')
+      if [[ $src[$i,$i+2] = "[-]" ]]; then
+        code+=($OP_SETZERO)
+        i=$(($i + 2))
+      else
+        code+=($OP_IF 0)
+        loops+=($#code)
+      fi;;
+    ']')
+      [[ $#loops -eq 0 ]] && echo "parse error" && return 1
+      loop=$loops[-1]
+      loops=($loops[1,-2])
+      code+=($OP_GOTO $(( $loop - 1 )))
+      code[$loop]=$(( $#code + 1 ))
+      ;;
+  esac
+done
+
+[[ $#loops -ne 0 ]] && echo "parse error" && return 1
+
+# execute
+local pt=1 input=
+local -a buffer
+
+for ((i = 1; $i <= $#code; i++)); do
+  [[ "$buffer[$pt]" = '' ]] && buffer[$pt]=0
+  case $code[$i] in
+    1) buffer[$pt]=$((($buffer[$pt] + 1) % 256));;       # OP_INCR
+    2) buffer[$pt]=$((($buffer[$pt] - 1 + 256) % 256));; # OP_DECR
+    3) pt=$(($pt + 1));; # OP_SUCC
+    4) pt=$(($pt - 1))   # OP_PRED
+       [[ $pt -lt 0 ]] && echo "buffer under flow" && return 1;;
+    5) echo -en "\x$(printf %x $buffer[$pt])";; # OP_WRITE
+    6) # OP_READ
+      [[ "$input" = '' ]] && read input && input+=$'\n'
+      buffer[$pt]=$(printf %d "'$input[1]")
+      input="$input[2,-1]";;
+    7) # OP_IF
+      if [[ $buffer[$pt] -eq 0 ]]; then
+        i=$(($code[$(($i + 1))] - 1))
+      else
+        i=$(($i + 1))
+      fi;;
+    8) # OP_GOTO
+      i=$(($code[$(($i + 1))] - 1));;
+    9) # OP_SETZERO
+      buffer[$pt]=0
+  esac
+done
+
+# vim: filetype=zsh
