@@ -18,6 +18,6 @@ local subcommand
 fpath+=("$path_to_this/subcommands")
 
 for subcommand in $path_to_this/subcommands/*(:t); do
-  type $subcommand 1>/dev/null 2&>1 && unfunction $subcommand
+  type $subcommand &>/dev/null && unfunction $subcommand
   autoload -Uz $subcommand
 done
