@@ -5,9 +5,9 @@ a brainf\*ck interpreter written in pure zsh
 
 ##install
 
-you clone or download this repository, and append to `$ZDOTDIR/.zshrc`:
+you clone or download this repository to `/your/bf.zsh/path`, and append to `$ZDOTDIR/.zshrc`:
 
-```
+```zsh
 fpath+=(/your/bf.zsh/path)
 autoload bf.zsh; bf.zsh
 ```
@@ -30,7 +30,7 @@ $ bf run a.bf
 A
 ```
 
-###generate brainf\*ck code to print specified message
+###generate a brainf\*ck code which is printing specified message
 
 ```
 $ bf generate A | bf run -
