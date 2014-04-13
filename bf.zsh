@@ -8,7 +8,7 @@
 
 # define bf command (function)
 bf() {
-  bf-${1} ${*[2,-1]}
+  bf-${1:=help} ${*[2,-1]}
 }
 
 # load subcommands
