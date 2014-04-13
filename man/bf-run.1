@@ -1,0 +1,43 @@
+.\" vim: filetype=nroff
+.TH bf-run 1 "2014-04-13" "v0.1.0" "bf.zsh"
+
+.SH NAME
+bf\-run \- a brainf*ck code runner in bf.zsh
+
+.SH SYNOPSIS
+.B bf run
+[-e
+.IR source ]...
+.RI < filename >...
+
+.SH DESCRIPTION
+.PP
+.B bf-run
+is a brainf*ck code runner of bf.zsh. It is very very slow.
+.PP
+.B brainf*ck
+is a minimal programming language. it support the eight operation, but it is turing complete. See also
+.IR http://en.wikipedia.org/wiki/Brainfuck .
+.PP
+The array size of bf-run's interpreter is no limit.
+
+.SH OPTIONS
+.TP
+.B -e
+.I source
+Specify brainf*ck code from prompt arguments.
+.TP
+.I filename
+Specify brainf*ck code from file. The codes specified by it and
+.B -e
+option are concatenated and used as brainf*ck code.
+
+.SH BUGS
+Please report any bugs to
+.IR https://github.com/kagamilove0707/bf.zsh .
+
+.SH LICENSE
+Copyright (c) 2014 TSUKIKAGE Osana (MIT License).
+
+.SH SEE ALSO
+.BR bf (1)

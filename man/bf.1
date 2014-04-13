@@ -1,0 +1,44 @@
+.\" vim: filetype=nroff
+.TH bf 1 "2014-04-13" "v0.1.0" "bf.zsh"
+
+.SH NAME
+bf \- a brainf*ck interpreter written in pure zsh
+
+.SH SYNOPSIS
+.B bf
+.I <subcommand>
+.RI [ options ...]
+
+.SH DESCRIPTION
+.I bf
+is a brainf*ck interpreter written in pure zsh. It is very very slow.
+
+.SH SUBCOMMANDS
+.TP
+.I run
+.BR
+Running a brainf*ck code. See also 
+.IR bf-run .
+.TP
+.I generate
+Generating a brainf*ck code to print specified message. See also 
+.IR bf-generate .
+
+.SH EXAMPLE
+.TP
+bf run -e "++++[>+<++++]>++."
+.TP
+bf run input.bf
+.TP
+bf generate "Hello, World" | bf run -
+
+.SH BUGS
+Please report any bugs to
+.IR https://github.com/kagamilove0707/bf.zsh .
+
+.SH LICENSE
+Copyright (c) 2014 TSUKIKAGE Osana (MIT License).
+
+.SH SEE ALSO
+.BR bf-run (1),
+.BR bf-generate (1)
