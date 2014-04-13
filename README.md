@@ -14,6 +14,26 @@ autoload bf.zsh; bf.zsh
 
 ##usage
 
+###show help
+
+```
+$ bf help
+bf.zsh - a brainf*ck interpreter written in pure zsh
+v0.1.0
+TSUKIKAGE Osana
+
+Usage:
+  bf <subcommand> [options]...
+
+Subcommand:
+  help     - show this help
+  author   - show author
+  version  - show bf.zsh's version
+  run      - run brainf*ck code
+  generate - generate a brainf*ck code to print specified message
+
+```
+
 ###run a brainf\*ck code
 
 ```
@@ -38,6 +58,12 @@ A
 $ bf generate "Hello, World" | bf run -
 Hello, World
 ```
+
+##samples
+
+  - `samples/helloworld.bf` prints `helloworld` to your terminal.
+  - `samples/echo.bf` is a simple echo program.
+  - `samples/generate.bf` is a generator like `bf generate`.
 
 ##author
 
