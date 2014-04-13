@@ -2,12 +2,12 @@ local str src= i ch
 local n=0
 str="$*"
 
-for ((i = 1; $i <= $#str; i++)); do
-  ch="$(printf %d "'${str[$i]}")"
-  for ((; $n < $ch; n++)); do
+for ((i = 1; i <= $#str; i++)); do
+  ch=$((##${str[i]}))
+  for ((; n < ch; n++)); do
     src+="+"
   done
-  for ((; $n > $ch; n--)); do
+  for ((; n > ch; n--)); do
     src+="-"
   done
   src+="."
