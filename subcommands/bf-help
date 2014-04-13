@@ -1,0 +1,21 @@
+local version="$(bf version)"
+local author="$(bf author)"
+
+cat <<EOHELP
+bf.zsh - a brainf*ck interpreter written in pure zsh
+$version
+$author
+
+Usage:
+  bf <subcommand> [options]...
+
+Subcommand:
+  help     - show this help
+  author   - show author
+  version  - show bf.zsh's version
+  run      - run brainf*ck code
+  generate - generate a brainf*ck code to print specified message
+
+EOHELP
+
+# vim: filetype=zsh
