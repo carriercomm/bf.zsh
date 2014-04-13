@@ -61,9 +61,9 @@ Hello, World
 
 ##samples
 
-  - `samples/helloworld.bf` prints `helloworld` to your terminal.
-  - `samples/echo.bf` is a simple echo program.
-  - `samples/generate.bf` is a generator like `bf generate`.
+  - `sample/helloworld.bf` prints `helloworld` to your terminal.
+  - `sample/echo.bf` is a simple echo program.
+  - `sample/generate.bf` is a generator like `bf generate`.
 
 ##author
 
