@@ -1,0 +1,38 @@
+local i
+
+# parse command line params local arg src 
+local arg src n=0 s=$'\n'
+[[ $# -eq 0 ]] && echo "filename missing" && return 1
+
+for ((i = 1; i <= $#; i++ )); do
+  arg=$*[i]
+  case $arg in
+    -e)
+      i=$(( i + 1 ))
+      src+="${*[i]}";;
+    -n)
+      i=$(( i + 1 ))
+      n="${*[i]}";;
+    -s)
+      i=$(( i + 1 ))
+      s="${*[i]}";;
+    -)
+      src+="$(< /dev/stdin)";;
+    *)
+      src+="$(< $arg)";;
+  esac
+done
+
+# compress source
+local compress
+for ((i = 1; i <= $#src; i++ )); do
+  case "${src[i]}" in
+    +|-|\<|\>|.|,|[|])
+      compress+="${src[i]}"
+      (( n > 0 && n <= $#compress )) && echo -n "${compress}${s}" && compress=
+      ;;
+  esac
+done
+echo "$compress"
+
+# vim: filetype=zsh
