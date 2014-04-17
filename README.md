@@ -19,7 +19,7 @@ autoload bf.zsh; bf.zsh
 ```
 $ bf help
 bf.zsh - a brainf*ck interpreter written in pure zsh
-v0.1.0
+v0.2.0
 TSUKIKAGE Osana
 
 Usage:
@@ -31,6 +31,7 @@ Subcommand:
   version  - show bf.zsh's version
   run      - run brainf*ck code
   generate - generate a brainf*ck code to print specified message
+  compress - compress a brainf*ck code. remove non-command characters.
 
 ```
 
@@ -57,6 +58,15 @@ $ bf generate A | bf run -
 A
 $ bf generate "Hello, World" | bf run -
 Hello, World
+```
+
+###compress a brainf\*ck code
+
+```
+$ cat b.bf
+p+r+i+n+t[B>+<++++]>+++.
+$ bf compress b.bf
+++++[>+<++++]>+++.
 ```
 
 ##samples
