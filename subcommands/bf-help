@@ -15,6 +15,7 @@ Subcommand:
   version  - show bf.zsh's version
   run      - run brainf*ck code
   generate - generate a brainf*ck code to print specified message
+  compress - compress a brainf*ck code. remove non-command characters.
 
 EOHELP
 
