@@ -1,0 +1,44 @@
+.\" vim: filetype=nroff
+.TH bf-compress 1 "2014-04-13" "v0.1.0" "bf.zsh"
+
+.SH NAME
+bf\-compress \- a brainf*ck code compressor in bf.zsh
+
+.SH SYNOPSIS
+.B bf compress
+[-n
+.IR number ]
+[-s
+.IR string ]
+[-e
+.IR source ]...
+.RI < filename >...
+
+.SH DESCRIPTION
+bf\-compress is a brainf*ck code compressor in bf.zsh. It removes non-command character from source code.
+
+.SH OPTIONS
+.TP
+.BI -n\  number
+Specify the number of breaking line. If it is 0, not breaking line. (default: 0)
+.TP
+.BI -s\  string
+Specify the string of breaking line. (default: \\n)
+.TP
+.BI -e\ source
+Specify brainf*ck code from prompt arguments.
+.TP
+.I filename
+Specify brainf*ck code from file. The codes specified by it and
+.B -e
+option are concatenated and used as brainf*ck code.
+
+.SH BUGS
+Please report any bugs to
+.IR https://github.com/kagamilove0707/bf.zsh .
+
+.SH LICENSE
+Copyright (c) 2014 TSUKIKAGE Osana (MIT License).
+
+.SH SEE ALSO
+.BR bf (1)
