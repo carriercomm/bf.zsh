@@ -1,4 +1,4 @@
-# bf.zsh - a brainf*ck interpreter written in pure zsh
+# bf.zsh - a brainf*ck tools written in pure zsh
 
 # this is a bootstrap script, so you have to load and execute this.
 # you should append to .zshrc
