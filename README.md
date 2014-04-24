@@ -1,7 +1,7 @@
 bf.zsh
 ===
 
-a brainf\*ck interpreter written in pure zsh
+a brainf\*ck tools written in pure zsh
 
 ##install
 
@@ -18,7 +18,7 @@ autoload bf.zsh; bf.zsh
 
 ```
 $ bf help
-bf.zsh - a brainf*ck interpreter written in pure zsh
+bf.zsh - a brainf*ck tools written in pure zsh
 v0.2.0
 TSUKIKAGE Osana
 

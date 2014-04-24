@@ -2,7 +2,7 @@ local version="$(bf version)"
 local author="$(bf author)"
 
 cat <<EOHELP
-bf.zsh - a brainf*ck interpreter written in pure zsh
+bf.zsh - a brainf*ck tools written in pure zsh
 $version
 $author
 
