@@ -27,7 +27,7 @@ done
 local compress
 for ((i = 1; i <= $#src; i++ )); do
   case "${src[i]}" in
-    +|-|\<|\>|.|,|[|])
+    +|-|\<|\>|.|,|\[|\])
       compress+="${src[i]}"
       (( n > 0 && n <= $#compress )) && echo -n "${compress}${s}" && compress=
       ;;
