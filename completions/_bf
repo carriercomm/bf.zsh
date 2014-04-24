@@ -1,0 +1,49 @@
+#compdef bf
+
+local context curcontext="$curcontext" state line ret=1
+local subcommands
+
+subcommands=(
+  'help[show help]'
+  'version[show version]'
+  'author[show author]'
+  'run[run a brainf*ck]'
+  'generate[generate a brainf*ck code to print specified message]'
+  'compress[compress a brainf*ck code. remove non-command characters]'
+)
+
+_arguments -C \
+  '1: :->subcommands' \
+  '*: :->args'
+
+case $state in
+  subcommands)
+    _values 'subcommands' $subcommands
+    ;;
+  args)
+    case ${words[2]} in
+      (help|version|author)
+        _message 'no more arguments'
+        ;;
+      run)
+        _arguments -C \
+          '-e[specify a brainf*ck code]:SOURCE' \
+          '*: :_files'
+        ;;
+      generate)
+        _arguments -C \
+          '*: :MESSAGE'
+        ;;
+      compress)
+        _arguments -C \
+          '-e[specify a brainf*ck code]:SOURCE'  \
+          '-n[a number of breaking line]:NUMBER' \
+          '-s[a string of breaking line]:STRING' \
+          '*: :_files'
+        ;;
+    esac
+esac && ret=0
+
+return $ret
+
+# vim: filetype=zsh
